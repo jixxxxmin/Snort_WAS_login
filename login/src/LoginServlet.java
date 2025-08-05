@@ -21,7 +21,7 @@ public class LoginServlet extends HttpServlet {
                 }
                      
                 catch (Exception e) {
-                            throw new ServletException(e);
+                    throw new ServletException(e);
                 }
             }
 }
