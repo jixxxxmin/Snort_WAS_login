@@ -1,3 +1,5 @@
+# 전부 무시
+*
 
 # gitignore 추적
 !.gitignore
@@ -8,6 +10,3 @@
 
 # web.xml 추적
 !/login/web.xml
-
-# 전부 무시
-*
