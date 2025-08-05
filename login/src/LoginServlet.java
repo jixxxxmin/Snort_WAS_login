@@ -17,13 +17,13 @@ public class LoginServlet extends HttpServlet {
                         stmt.setString(1, id);
                         stmt.setString(2, pw);
                         boolean success = stmt.executeQuery().next();
-                        response.getWriter().println(success ? "로그인 성공" : "로그인 실패");
+                        response.getWriter().println(success ? "login success" : "login failed");
                 }
                      
                 catch (Exception e) {
                     e.printStackTrace();
                     response.setContentType("text/plain;charset=UTF-8");
-                    response.getWriter().println("서버 내부 오류: " + e.getMessage());
+                    response.getWriter().println("server error: " + e.getMessage());
                 }
             }
 }
