@@ -6,7 +6,7 @@
 
 # src 디렉터리 추적
 !/login/src/
-!/login/src/**/*
+!/login/src/**
 
 # web.xml 추적
 !/login/web.xml
