@@ -1,0 +1,9 @@
+# 전부 무시
+*
+
+# gitignore 추적
+!.gitignore
+
+# src 디렉터리만 추적
+!src/
+!src/**
