@@ -21,7 +21,9 @@ public class LoginServlet extends HttpServlet {
                 }
                      
                 catch (Exception e) {
-                    throw new ServletException(e);
+                    e.printStackTrace();
+                    response.setContentType("text/plain;charset=UTF-8");
+                    response.getWriter().println("서버 내부 오류: " + e.getMessage());
                 }
             }
 }
