@@ -25,7 +25,7 @@ public class LoginServlet extends HttpServlet {
                         
                         if (success) {
                             HttpSession session = request.getSession();
-                            session.setMaxInactiveInterval(60);
+                            session.setMaxInactiveInterval(3600);
                             session.setAttribute("id", id);
                             response.getWriter().println("login success");
                         }
