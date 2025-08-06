@@ -2,6 +2,7 @@ import java.io.*;
 import java.sql.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
+import javax.servlet.http.HttpSession;
 
 
 
@@ -21,7 +22,16 @@ public class LoginServlet extends HttpServlet {
                         stmt.setString(1, id);
                         stmt.setString(2, pw);
                         boolean success = stmt.executeQuery().next();
-                        response.getWriter().println(success ? "login success" : "login failed");
+                        
+                        if (success) (
+                            HttpSession session = request.getSession();
+                            session.setAttribute("id", id);
+                            response.getWriter().println("login success");
+                        )
+                        else (
+                            response.getWriter().println("login failed");
+                        )
+
                 }
                      
                 catch (Exception e) {
