@@ -23,14 +23,14 @@ public class LoginServlet extends HttpServlet {
                         stmt.setString(2, pw);
                         boolean success = stmt.executeQuery().next();
                         
-                        if (success) (
+                        if (success) {
                             HttpSession session = request.getSession();
                             session.setAttribute("id", id);
                             response.getWriter().println("login success");
-                        )
-                        else (
+                        }
+                        else {
                             response.getWriter().println("login failed");
-                        )
+                        }
 
                 }
                      
