@@ -28,7 +28,7 @@ public class LoginServlet extends HttpServlet {
                             session.setMaxInactiveInterval(3600);
                             session.setAttribute("id", id);
                             
-                            if (session) {
+                            if (session != null) {
                                 response.getWriter().println("session OK");
                             }                            
                         }
