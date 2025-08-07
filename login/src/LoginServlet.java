@@ -24,13 +24,15 @@ public class LoginServlet extends HttpServlet {
                         boolean success = stmt.executeQuery().next();
                         
                         if (success) {
-                            HttpSession session = request.getSession();
+                            HttpSession oldSession = request.getSession(false);
+                            if (oldSession != null){
+                                oldSession.invalidate();
+                            }
+                            
+                            HttpSession session = request.getSession(true);
                             session.setMaxInactiveInterval(3600);
                             session.setAttribute("id", id);
-                            
-                            if (session != null) {
-                                response.getWriter().println("session OK");
-                            }                            
+                            response.getWriter().println("login success. New session for you.")
                         }
                         else {
                             response.getWriter().println("login failed");
