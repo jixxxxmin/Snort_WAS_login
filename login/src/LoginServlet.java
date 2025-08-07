@@ -32,7 +32,7 @@ public class LoginServlet extends HttpServlet {
                             HttpSession session = request.getSession(true);
                             session.setMaxInactiveInterval(3600);
                             session.setAttribute("id", id);
-                            response.getWriter().println("login success. New session for you.")
+                            response.getWriter().println("login success. New session for you.");
                         }
                         else {
                             response.getWriter().println("login failed");
