@@ -16,7 +16,6 @@ public class LoginServlet extends HttpServlet {
 
                 String id = request.getParameter("id");
                 String pw = request.getParameter("password");
-                String clientIP = request.getRemoteAddr();
 
                 try (Connection conn = DriverManager.getConnection("jdbc:mysql://10.10.6.10:3306/users?serverTimezone=Asia/Seoul", "login", "QQww11@@");
                      PreparedStatement stmt = conn.prepareStatement("SELECT 1 FROM account WHERE id = ? AND password = ?")){
@@ -33,7 +32,8 @@ public class LoginServlet extends HttpServlet {
                             HttpSession session = request.getSession(true);
                             session.setMaxInactiveInterval(3600);
                             session.setAttribute("id", id);
-                            response.getWriter().println(clientIP);
+                            
+                            response.sendRedirect("/admin");
                         }
                         else {
                             response.getWriter().println("login failed");
