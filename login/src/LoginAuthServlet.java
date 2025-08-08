@@ -18,7 +18,6 @@ public class LoginAuthServlet extends HttpServlet {
             response.setHeader("Pragma", "no-cache");
             response.setStatus(HttpServletResponse.SC_OK);
             response.setContentType("text/plain; charset=UTF-8");
-            response.getWriter().write("ok");
 
             response.getWriter().println("You have session");
         }
