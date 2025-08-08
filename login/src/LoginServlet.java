@@ -36,7 +36,7 @@ public class LoginServlet extends HttpServlet {
                             response.sendRedirect("/admin");
                         }
                         else {
-                            response.getWriter().println("login failed");
+                            response.sendRedirect("/login?login_failed=1");
                         }
 
                 }
