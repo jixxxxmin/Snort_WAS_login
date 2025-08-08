@@ -20,13 +20,13 @@ public class LoginAuthServlet extends HttpServlet {
             resp.setContentType("text/plain; charset=UTF-8");
             resp.getWriter().write("ok");
 
-            response.getWriter.println("You have session");
+            response.getWriter().println("You have session");
         }
         else {
             resp.reset();
             resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
 
-            response.getWriter.println("You don't have session");
+            response.getWriter().println("You don't have session");
         }
     }
 }
