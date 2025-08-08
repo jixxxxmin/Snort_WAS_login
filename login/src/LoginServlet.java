@@ -6,45 +6,44 @@ import javax.servlet.http.HttpSession;
 
 
 
+@WebServlet(name = "LoginServlet", urlPatterns = {"/login/login"})
 public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    throws ServletException, IOException {
                 
-                request.setCharacterEncoding("UTF-8");
-                response.setContentType("text/plain;charset=UTF-8");
-                response.setCharacterEncoding("UTF-8"); 
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/plain;charset=UTF-8");
+        response.setCharacterEncoding("UTF-8"); 
 
-                String id = request.getParameter("id");
-                String pw = request.getParameter("password");
+        String id = request.getParameter("id");
+        String pw = request.getParameter("password");
 
-                try (Connection conn = DriverManager.getConnection("jdbc:mysql://10.10.6.10:3306/users?serverTimezone=Asia/Seoul", "login", "QQww11@@");
-                     PreparedStatement stmt = conn.prepareStatement("SELECT 1 FROM account WHERE id = ? AND password = ?")){
-                        stmt.setString(1, id);
-                        stmt.setString(2, pw);
-                        boolean success = stmt.executeQuery().next();
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://10.10.6.10:3306/users?serverTimezone=Asia/Seoul", "login", "QQww11@@");
+             PreparedStatement stmt = conn.prepareStatement("SELECT 1 FROM account WHERE id = ? AND password = ?")){
+                stmt.setString(1, id);
+                stmt.setString(2, pw);
+                boolean success = stmt.executeQuery().next();
                         
-                        if (success) {
-                            HttpSession oldSession = request.getSession(false);
-                            if (oldSession != null){
-                                oldSession.invalidate();
-                            }
-                            
-                            HttpSession session = request.getSession(true);
-                            session.setMaxInactiveInterval(3600);
-                            session.setAttribute("id", id);
-                            
-                            response.sendRedirect("/admin");
-                        }
-                        else {
-                            response.sendRedirect("?login_failed=1");
-                        }
-
+                if (success) {
+                    HttpSession oldSession = request.getSession(false);
+                    
+                    if (oldSession != null) {oldSession.invalidate();}
+                        
+                    HttpSession session = request.getSession(true);
+                    session.setMaxInactiveInterval(3600);
+                    session.setAttribute("id", id);
+                        
+                    response.sendRedirect("/admin");
                 }
-                     
-                catch (Exception e) {
-                    e.printStackTrace();
-                    response.setContentType("text/plain;charset=UTF-8");
-                    response.getWriter().println("server error: " + e.getMessage());
+                else {
+                    response.sendRedirect("?login_failed=1");
                 }
             }
+                     
+        catch (Exception e) {
+            e.printStackTrace();
+            response.setContentType("text/plain;charset=UTF-8");
+            response.getWriter().println("server error: " + e.getMessage());
+        }
+    }
 }
