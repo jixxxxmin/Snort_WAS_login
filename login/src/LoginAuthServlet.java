@@ -8,23 +8,23 @@ import javax.servlet.http.*;
 public class LoginAuthServlet extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws IOException {
         
-        HttpSession s = req.getSession(false);
+        HttpSession s = request.getSession(false);
 
         if (s != null) {
-            resp.setHeader("Cache-Control", "no-store, no-cache, must-revalidate");
-            resp.setHeader("Pragma", "no-cache");
-            resp.setStatus(HttpServletResponse.SC_OK);
-            resp.setContentType("text/plain; charset=UTF-8");
-            resp.getWriter().write("ok");
+            response.setHeader("Cache-Control", "no-store, no-cache, must-revalidate");
+            response.setHeader("Pragma", "no-cache");
+            response.setStatus(HttpServletResponse.SC_OK);
+            response.setContentType("text/plain; charset=UTF-8");
+            response.getWriter().write("ok");
 
             response.getWriter().println("You have session");
         }
         else {
-            resp.reset();
-            resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            response.reset();
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
 
             response.getWriter().println("You don't have session");
         }
