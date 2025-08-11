@@ -29,7 +29,7 @@ public class LoginServlet extends HttpServlet {
                 if (success) {
                     HttpSession oldSession = request.getSession(false);
                     
-                    if (oldSession != null) {oldSession.invalidate();}
+                    if (oldSession != null) {oldSession.invalidate();};
                         
                     HttpSession session = request.getSession(true);
                     session.setMaxInactiveInterval(3600);
@@ -38,6 +38,7 @@ public class LoginServlet extends HttpServlet {
                     response.sendRedirect("/admin");
                 }
                 else {
+                    if (oldSession != null) {oldSession.invalidate();}
                     Cookie jsid = new Cookie("JSESSIONID", "");
                     jsid.setMaxAge(0);
                     jsid.setPath("/");
