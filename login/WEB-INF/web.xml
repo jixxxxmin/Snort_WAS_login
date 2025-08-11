@@ -20,4 +20,11 @@
         <url-pattern>/auth</url-pattern>
     </servlet-mapping>
 
+    <session-config>
+        <cookie-config>
+            <path>/</path>
+            <http-only>true</http-only>
+        </cookie-config>
+    </session-config>
+    
 </web-app>
