@@ -3,6 +3,8 @@ import java.sql.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.http.HttpSession;
+import javax.servlet.annotation.WebServlet;
+
 
 
 
@@ -28,7 +30,6 @@ public class LoginServlet extends HttpServlet {
                         
                 if (success) {
                     HttpSession oldSession = request.getSession(false);
-                    
                     if (oldSession != null) {oldSession.invalidate();};
                         
                     HttpSession session = request.getSession(true);
@@ -38,7 +39,9 @@ public class LoginServlet extends HttpServlet {
                     response.sendRedirect("/admin");
                 }
                 else {
+                    HttpSession oldSession = request.getSession(false);
                     if (oldSession != null) {oldSession.invalidate();}
+
                     Cookie jsid = new Cookie("JSESSIONID", "");
                     jsid.setMaxAge(0);
                     jsid.setPath("/");
