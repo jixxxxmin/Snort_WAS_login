@@ -38,7 +38,6 @@ public class LoginServlet extends HttpServlet {
                     response.sendRedirect("/admin");
                 }
                 else {
-                    if (oldSession != null) {oldSession.invalidate();}
                     Cookie jsid = new Cookie("JSESSIONID", "");
                     jsid.setMaxAge(0);
                     jsid.setPath("/");
