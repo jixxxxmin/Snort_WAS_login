@@ -32,8 +32,7 @@ restart:
 
 
 # commands
-all:
-	pull hello login loginauth restart
+all: pull hello login loginauth restart
 
 
 # compile 파일 초기화
