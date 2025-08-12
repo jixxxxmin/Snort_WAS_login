@@ -36,7 +36,7 @@ public class LoginServlet extends HttpServlet {
                     session.setMaxInactiveInterval(3600);
                     session.setAttribute("id", id);
                         
-                    response.sendRedirect("/adminauth");
+                    response.sendRedirect("/admin");
                 }
                 else {
                     HttpSession oldSession = request.getSession(false);
