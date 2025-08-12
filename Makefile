@@ -19,11 +19,11 @@ pull:
 	git pull
 
 # compile
-jhello:
+hello:
 	javac -classpath "$(SERVLET_JAR)" -d $(HELLO_CLASS) $(HELLO_SRC)
-jlogin:
+login:
 	javac -classpath "$(SERVLET_JAR)" -d $(LOGIN_CLASS) $(LOGIN_SRC)
-jloginauth:
+loginauth:
 	javac -classpath "$(SERVLET_JAR)" -d $(LOGIN_CLASS) $(LOGIN_AUTH_SRC)
 	
 # systemctl
@@ -32,8 +32,6 @@ restart:
 
 
 # commands
-hello: pull jhello restart
-login: pull jlogin jloginauth restart
 all: pull jhello jlogin jloginauth restart
 
 
