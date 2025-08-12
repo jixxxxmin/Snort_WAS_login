@@ -46,7 +46,7 @@ public class LoginServlet extends HttpServlet {
                     jsid.setMaxAge(0);
                     jsid.setPath("/");
                     response.addCookie(jsid);
-
+                    
                     response.sendRedirect("?login_failed=1");
                 }
             }

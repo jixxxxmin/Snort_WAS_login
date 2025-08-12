@@ -9,8 +9,6 @@ public class HelloServlet extends HttpServlet {
     throws ServletException, IOException {
 
         try {
-            response.setContentType("text/html;charset=UTF-8");
-
             PrintWriter out = response.getWriter();
             response.setContentType("text/html; charset=UTF-8");
 
@@ -63,6 +61,9 @@ public class HelloServlet extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Hello World</h1>");
+            out.println("<script>");
+            out.println("window.history.replaceState({}, document.title, window.location.pathname);");
+            out.println("</script>");
             out.println("</body>");
             out.println("</html>");
         }
