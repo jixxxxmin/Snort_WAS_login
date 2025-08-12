@@ -11,7 +11,7 @@ LOGIN_CLASS:=$(REPO)/login/WEB-INF/classes
 
 
 # define command
-.PHONY: pull jhello jlogin jloginauth restart hello login clean
+.PHONY: pull jhello jlogin jloginauth restart hello login clean all
 
 
 # git pull
@@ -34,6 +34,7 @@ restart:
 # commands
 hello: pull jhello restart
 login: pull jlogin jloginauth restart
+all: pull jhello jlogin jloginauth restart
 
 
 # compile 파일 초기화
