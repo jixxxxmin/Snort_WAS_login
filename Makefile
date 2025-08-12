@@ -32,7 +32,7 @@ restart:
 
 
 # commands
-all: pull jhello jlogin jloginauth restart
+all: pull hello login loginauth restart
 
 
 # compile 파일 초기화
