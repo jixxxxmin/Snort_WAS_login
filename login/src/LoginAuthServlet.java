@@ -4,7 +4,7 @@ import javax.servlet.http.*;
 
 
 
-@WebServlet(name = "LoginAuthServlet", urlPatterns = {"/login/auth"})
+// @WebServlet(name = "LoginAuthServlet", urlPatterns = {"/login/auth"})
 public class LoginAuthServlet extends HttpServlet {
 
     @Override

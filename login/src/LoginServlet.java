@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 
 
 
-@WebServlet(name = "LoginServlet", urlPatterns = {"/login/login"})
+// @WebServlet(name = "LoginServlet", urlPatterns = {"/login/login"})
 public class LoginServlet extends HttpServlet {
 
     @Override
