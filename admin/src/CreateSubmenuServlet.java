@@ -72,7 +72,7 @@ public class CreateSubmenuServlet extends HttpServlet {
                 stmt.setString(3, menu_id);
             }
             else if ("update".equals(action)) {
-                stmt.setString(1, submenu_id);
+                stmt.setString(1, submenu_name);
                 stmt.setString(2, descript);
                 stmt.setString(3, menu_id);
                 stmt.setString(4, submenu_id);
