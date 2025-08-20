@@ -52,3 +52,4 @@ clean:
 	rm -f $(HELLO_CLASS)/HelloServlet.class
 	rm -f $(LOGIN_CLASS)/LoginServlet.class
 	rm -f $(LOGIN_CLASS)/LoginAuthServlet.class
+	rm -f $(ADMIN_CLASS)/CreateSubmenuServlet.class
