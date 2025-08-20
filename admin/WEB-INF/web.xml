@@ -4,7 +4,7 @@
 
     <servlet>
         <servlet-name>CreateSubmenuServlet</servlet-name>
-        <servlet-classs>CreateSubmenuServlet</servlet-classs>
+        <servlet-class>CreateSubmenuServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
