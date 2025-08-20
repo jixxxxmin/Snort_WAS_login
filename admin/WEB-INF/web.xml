@@ -1,0 +1,15 @@
+
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         version="3.1">
+
+    <servlet>
+        <servlet-name>CreateSubmenuServlet</servlet-name>
+        <servlet-classs>CreateSubmenuServlet</servlet-classs>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>CreateSubmenuServlet</servlet-name>
+        <url-pattern>/create_submenu</url-pattern>
+    </servlet-mapping>
+
+</web-app>

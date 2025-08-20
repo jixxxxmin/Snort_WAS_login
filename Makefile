@@ -9,14 +9,23 @@ LOGIN_SRC:=$(REPO)/login/src/LoginServlet.java
 LOGIN_AUTH_SRC:=$(REPO)/login/src/LoginAuthServlet.java
 LOGIN_CLASS:=$(REPO)/login/WEB-INF/classes
 
+ADMIN_SRC:=$(REPO)/admin/src/CreateSubmenuServlet.java
+ADMIN_CLASS:=$(REPO)/admin/WEB-INF/classes
+
 
 # define command
-.PHONY: pull jhello jlogin jloginauth restart hello login clean all
+.PHONY: 
 
 
 # git pull
 pull:
 	git pull
+
+# 폴더 생성
+make_folders:
+	mkdir -p $(HELLO_CLASS)
+	mkdir -p $(LOGIN_CLASS)
+	mkdir -p $(ADMIN_CLASS)
 
 # compile
 hello:
@@ -25,14 +34,17 @@ login:
 	javac -classpath "$(SERVLET_JAR)" -d $(LOGIN_CLASS) $(LOGIN_SRC)
 loginauth:
 	javac -classpath "$(SERVLET_JAR)" -d $(LOGIN_CLASS) $(LOGIN_AUTH_SRC)
-	
+admin:
+	javac -classpath "$(SERVLET_JAR)" -d $(ADMIN_CLASS) $(ADMIN_SRC)
+
 # systemctl
 restart:
 	systemctl stop tomcat && systemctl start tomcat
 
 
 # commands
-all: pull hello login loginauth restart
+set: make_folders
+build: hello login loginauth admin restart
 
 
 # compile 파일 초기화
