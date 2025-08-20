@@ -14,7 +14,7 @@ ADMIN_CLASS:=$(REPO)/admin/WEB-INF/classes
 
 
 # define command
-.PHONY: 
+.PHONY: pull make_folders hello login loginauth admin restart set build clean
 
 
 # git pull
