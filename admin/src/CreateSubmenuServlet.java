@@ -23,6 +23,8 @@ public class CreateSubmenuServlet extends HttpServlet {
         String DB_USER = System.getenv("DB_USER");
         String DB_PASSWORD = System.getenv("DB_PASSWORD");
 
+        String action = request.getParameter("action");
+        String submenu_id = request.getParameter("submenu_id");
         String submenu_name = request.getParameter("submenu_name");
         String descript = request.getParameter("descript");
         String menu_id = request.getParameter("menu_id");
@@ -34,12 +36,29 @@ public class CreateSubmenuServlet extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
 
 
-        if (submenu_name != null && !submenu_name.trim().isEmpty() && menu_id != null && !menu_id.trim().isEmpty()) {
-            query = "INSERT INTO SubMenu (submenu_name, descript, menu_id) VALUES (?, ?, ?)";
+        if ("add".equals(action)) {
+            if (submenu_name != null && !submenu_name.trim().isEmpty() &&
+                menu_id != null && !menu_id.trim().isEmpty()) {
+                query = "INSERT INTO SubMenu (submenu_name, descript, menu_id) VALUES (?, ?, ?)";
+            }
+        } 
+        else if ("update".equals(action)) {
+            if (submenu_id != null && !submenu_id.trim().isEmpty() &&
+                submenu_name != null && !submenu_name.trim().isEmpty() &&
+                menu_id != null && !menu_id.trim().isEmpty()) {
+                query = "UPDATE SubMenu SET submenu_name = ?, descript = ?, menu_id = ? WHERE submenu_id = ?";
+            }
         }
         else {
             response.reset();
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            response.getWriter().println("Not action");
+            return;
+        }
+
+        if (query == null) {
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            response.getWriter().println("query가 생성되지 않았습니다.");
             return;
         }
 
