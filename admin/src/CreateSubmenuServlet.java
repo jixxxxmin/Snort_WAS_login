@@ -29,7 +29,7 @@ public class CreateSubmenuServlet extends HttpServlet {
         String descript = request.getParameter("descript");
         String menu_id = request.getParameter("menu_id");
 
-        String query;
+        String query = null;
 
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/plain;charset=UTF-8");
