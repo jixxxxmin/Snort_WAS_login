@@ -65,10 +65,18 @@ public class CreateSubmenuServlet extends HttpServlet {
         
         try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
              PreparedStatement stmt = conn.prepareStatement(query)) {
-
-            stmt.setString(1, submenu_name);
-            stmt.setString(2, descript);
-            stmt.setString(3, menu_id);
+            
+            if ("add".equals(action)) {
+                stmt.setString(1, submenu_name);
+                stmt.setString(2, descript);
+                stmt.setString(3, menu_id);
+            }
+            else if ("update".equals(action)) {
+                stmt.setString(1, submenu_id);
+                stmt.setString(2, descript);
+                stmt.setString(3, menu_id);
+                stmt.setString(4, submenu_id);
+            }
 
             int rs = stmt.executeUpdate();
 
