@@ -19,6 +19,8 @@ public class CreateSubmenuServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
 
+        request.setCharacterEncoding("UTF-8");
+
         String DB_URL = System.getenv("DB_URL");
         String DB_USER = System.getenv("DB_USER");
         String DB_PASSWORD = System.getenv("DB_PASSWORD");
@@ -31,7 +33,6 @@ public class CreateSubmenuServlet extends HttpServlet {
 
         String query = null;
 
-        request.setCharacterEncoding("UTF-8");
         response.setContentType("text/plain;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
 
