@@ -1,6 +1,7 @@
 # 변수 선언
 REPO:=/home/user/github/Snort_WAS_login
 SERVLET_JAR:=/opt/tomcat9/lib/servlet-api.jar
+GSON_ADMIN_JAR:=$(REPO)/admin/WEB-INF/lib
 
 HELLO_SRC:=$(REPO)/hello/src/HelloServlet.java
 HELLO_CLASS:=$(REPO)/hello/WEB-INF/classes
@@ -15,7 +16,7 @@ ADMIN_CLASS:=$(REPO)/admin/WEB-INF/classes
 
 
 # define command
-.PHONY: pull make_folders hello login loginauth mcreate mget restart set build clean
+.PHONY: pull make_folders delete down hello login loginauth mcreate mget restart set build clean
 
 
 # git pull
@@ -26,7 +27,14 @@ pull:
 make_folders:
 	mkdir -p $(HELLO_CLASS)
 	mkdir -p $(LOGIN_CLASS)
+	mkdir -p $(GSON_ADMIN_JAR)
 	mkdir -p $(ADMIN_CLASS)
+
+# 필요 파일 download
+delete:
+	rm -f $(GSON_ADMIN_JAR)/gson-2.10.1.jar
+down:
+	curl -o $(GSON_ADMIN_JAR)/gson-2.10.1.jar https://repo1.maven.org/maven2/com/google/code/gson/gson/2.10.1/gson-2.10.1.jar
 
 # compile
 hello:
@@ -46,7 +54,7 @@ restart:
 
 
 # commands
-set: make_folders
+set: make_folders delete down
 build: hello login loginauth mcreate mget restart
 
 
