@@ -49,6 +49,11 @@ public class CreateSubmenuServlet extends HttpServlet {
                 query = "UPDATE SubMenu SET submenu_name = ?, descript = ?, menu_id = ? WHERE submenu_id = ?";
             }
         }
+        else if ("delete".equals(action)) {
+            if (submenu_id != null && !submenu_id.trim().isEmpty()) {
+                query = "DELETE FROM SubMenu WHERE submenu_id = ?";
+            }
+        }
         else {
             response.reset();
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
@@ -76,6 +81,9 @@ public class CreateSubmenuServlet extends HttpServlet {
                 stmt.setString(2, descript);
                 stmt.setString(3, menu_id);
                 stmt.setString(4, submenu_id);
+            }
+            else if ("delete".equals(action)) {
+                stmt.setString(1, submenu_id);
             }
 
             int rs = stmt.executeUpdate();
