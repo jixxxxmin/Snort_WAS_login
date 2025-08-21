@@ -6,10 +6,17 @@
         <servlet-name>CreateSubmenuServlet</servlet-name>
         <servlet-class>CreateSubmenuServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GetAdminMenuServlet</servlet-name>
+        <servlet-class>GetAdminMenuServlet</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>CreateSubmenuServlet</servlet-name>
         <url-pattern>/create_submenu</url-pattern>
     </servlet-mapping>
-
+    <servlet-mapping>
+        <servlet-name>GetAdminMenuServlet</servlet-name>
+        <url-pattern>/getmenu</url-pattern>
+    </servlet-mapping>
 </web-app>
