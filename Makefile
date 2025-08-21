@@ -46,7 +46,7 @@ loginauth:
 mcreate:
 	javac -classpath "$(SERVLET_JAR)" -d $(ADMIN_CLASS) $(ADMIN_MCREATE_SRC)
 mget:
-	javac -classpath "$(SERVLET_JAR)" -d $(ADMIN_CLASS) $(ADMIN_MGET_SRC)
+	javac -classpath "$(SERVLET_JAR):$(GSON_ADMIN_JAR)/gson-2.10.1.ja" -d $(ADMIN_CLASS) $(ADMIN_MGET_SRC)
 
 # systemctl
 restart:
