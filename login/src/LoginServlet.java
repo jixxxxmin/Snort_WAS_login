@@ -30,8 +30,12 @@ public class LoginServlet extends HttpServlet {
         String id = request.getParameter("id");
         String pw = request.getParameter("password");
 
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://10.10.6.10:3306/users?serverTimezone=Asia/Seoul", "login", "QQww11@@");
-             PreparedStatement stmt = conn.prepareStatement("SELECT 1 FROM account WHERE id = ? AND password = ?")){
+        String DB_URL = System.getenv("DB_URL");
+        String DB_USER = System.getenv("DB_USER");
+        String DB_PASSWORD = System.getenv("DB_PASSWORD");
+
+        try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+             PreparedStatement stmt = conn.prepareStatement("SELECT 1 FROM accounts WHERE id=? AND password=SHA2(CONCAT(?, salt), 256);")){
                 stmt.setString(1, id);
                 stmt.setString(2, pw);
                 boolean success = stmt.executeQuery().next();
