@@ -1,5 +1,5 @@
 # 변수 선언
-REPO:=/home/login_user/github/Snort_WAS_login
+REPO:=/home/login_user/Snort_WAS_login
 SERVLET_JAR:=/opt/tomcat9/lib/servlet-api.jar
 GSON_ADMIN_JAR:=$(REPO)/admin/WEB-INF/lib
 
